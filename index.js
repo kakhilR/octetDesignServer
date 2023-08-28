@@ -13,9 +13,13 @@ app.use(cors());
 
 await databaseConnection();
 
+app.get('/hi',(req,res)=>{
+    res.send("hello")
+})
+
 app.use('/api',jobDataRoutes)
 
-app.listen(process.env.port,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("listening on port 8000")
 })
 
