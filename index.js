@@ -1,8 +1,10 @@
 import cors from 'cors';
+import dotEnv from 'dotenv';
 import express from 'express';
 import { databaseConnection } from './models/connection.js';
 import { jobDataRoutes } from './routes/jobData.js';
 
+dotEnv.config();
 const app = express();
 
 app.use(express.json());
@@ -13,7 +15,7 @@ await databaseConnection();
 
 app.use('/api',jobDataRoutes)
 
-app.listen(8000,()=>{
+app.listen(process.env.port,()=>{
     console.log("listening on port 8000")
 })
 
